@@ -1,4 +1,6 @@
-import {useState} from "react";
+import {useState} from "react"
+import GlobalStyle from "./Styles/StyleGlobal"
+import {StyledDiv} from "./Styles/StyledDiv"
 
 export default () => {
     const [joke, setJoke] = useState("");
@@ -13,10 +15,11 @@ export default () => {
         .then(res => setJoke(res.joke)); 
     };
     return (
-        <div>
+        <StyledDiv>
+            <GlobalStyle />
             <h1>Preparat per riure?	&#129315;</h1>
-            <div>{joke}</div>
-            <button onClick={() =>getJoke()}>Següent</button>
-        </div>
+            <p>{joke}</p>
+            <button onClick={() =>getJoke()}>Següent acudit</button>
+        </StyledDiv>
     );
 };
