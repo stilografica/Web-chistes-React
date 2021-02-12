@@ -1,20 +1,17 @@
 import {useState} from "react";
-import axios from "axios";
 
 export default () => {
     const [joke, setJoke] = useState("");
-    //With Axios
+    //With API fetch
     const getJoke = () => {
-        axios
-            .get("https://icanhazdadjoke.com/", {
-                headers: {
-                    Accept: "application/json",
-                },
-            })
-            .then((res) => {
-                setJoke(res.data.joke);
-            })
-    }
+        fetch('https://icanhazdadjoke.com/', {
+            headers : { 
+                'Accept': 'application/json'
+            }
+        }) 
+        .then(res => res.json())
+        .then(res => setJoke(res.joke)); 
+    };
     return (
         <div>
             <h1>Preparat per riure?	&#129315;</h1>
