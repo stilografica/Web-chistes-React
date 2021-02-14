@@ -1,25 +1,41 @@
-import {useState} from "react"
 import GlobalStyle from "./Styles/StyleGlobal"
-import {StyledDiv} from "./Styles/StyledDiv"
+import Weather from "../src/Components/Weather"
+import Joke from "../src/Components/Joke"
+import styled from "styled-components"
+import {keyframes} from 'styled-components'
+
+const appear = keyframes`
+    0% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  `;
+
+export const StyledMain = styled.main`
+    height: 100vh;
+    background-image: url("./src/Assets/Images/pexels-helena-lopes.jpg");
+    background-color: rgba(255, 255, 255, 0.5);
+    background-blend-mode: lighten;
+    padding: 0;
+    -webkit-animation: ${appear} 1s both;
+    animation: ${appear} 1s both;
+
+    @media screen and (max-width:790px){
+        height: 100vh;
+        overflow-y: auto;
+    }
+`;
 
 export default () => {
-    const [joke, setJoke] = useState("");
-    //With API fetch
-    const getJoke = () => {
-        fetch('https://icanhazdadjoke.com/', {
-            headers : { 
-                'Accept': 'application/json'
-            }
-        }) 
-        .then(res => res.json())
-        .then(res => setJoke(res.joke)); 
-    };
     return (
-        <StyledDiv>
+        <StyledMain>
             <GlobalStyle />
-            <h1>Preparat per riure?	&#129315;</h1>
-            <p>{joke}</p>
-            <button onClick={() =>getJoke()}>Següent acudit</button>
-        </StyledDiv>
+            <Weather />
+            <Joke />
+        </StyledMain>
     );
 };
