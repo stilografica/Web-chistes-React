@@ -1,5 +1,5 @@
 import {useState} from "react"
-import {StyledArticle} from "../Styles/StyledArticle"
+import {StyledArticle, Button, H1} from "../Styles/StyledArticle"
 
 export default () => {
     const [joke, setJoke] = useState("");
@@ -16,9 +16,9 @@ export default () => {
     return (
         <StyledArticle>
             <section>
-                <h1>Preparat per riure?	&#129315;</h1>
+                <H1>Preparat per riure?	&#129315;</H1>
                 <p>{joke}</p>
-                <button onClick={() =>getJoke()}>Següent acudit</button>
+                <Button onClick={() =>getJoke()}>Següent acudit</Button>
             </section>
         </StyledArticle>
     );

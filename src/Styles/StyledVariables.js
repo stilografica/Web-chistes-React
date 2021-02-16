@@ -5,6 +5,5 @@ export const color = {
 
 export const font = {
     fontFamily: "Montserrat",
-    color: "#2f2d2f",
-    textAlign: "center",
+    color: "#2f2d2f"
 }
