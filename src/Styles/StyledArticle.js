@@ -1,6 +1,5 @@
 import styled from "styled-components"
-import {color, font} from "./StyledVariables"
-import {start} from "../Components/Welcome"
+import {color, font, selection, animation} from "./StyledVariables"
 
 export const StyledArticle = styled.article`
     display: flex;
@@ -29,8 +28,7 @@ export const StyledArticle = styled.article`
             padding: 2rem 0 2rem 0;
             margin: 0;
             &::selection {
-                background-color: ${color.aqua};
-                color: ${color.white};
+                ${selection};
             }
         }
         @media screen and (max-width:790px){
@@ -38,7 +36,8 @@ export const StyledArticle = styled.article`
         }
     }
 `; 
-
+//Variable declared to pass time delay "animation"
+let i;
 export const H1 = styled.h1`
     justify-self: flex-start;
     ${font}
@@ -47,11 +46,9 @@ export const H1 = styled.h1`
     text-align: center;
     margin: 0;
     opacity: 0;
-    -webkit-animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1.2s forwards; 
-    animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1.2s forwards;     
+    ${animation(i=1.2)} 
     &::selection {
-        background-color: ${color.aqua};
-        color: ${color.white};
+        ${selection};
     }
 `;
 
@@ -68,11 +65,9 @@ export const Subtitle = styled.h2`
     color: ${color.white};
     max-width: 35.25rem;
     opacity: 0;
-    -webkit-animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1.3s forwards; 
-    animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1.3s forwards; 
+    ${animation(i=1.3)} 
     &::selection {
-        background-color: ${color.aqua};
-        color: ${color.white};
+        ${selection};
     }
 `;
 
@@ -88,8 +83,7 @@ export const Button = styled.button`
     border-radius: 15px;
     cursor: pointer;
     opacity: 0;
-    -webkit-animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1.4s forwards; 
-    animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1.4s forwards; 
+    ${animation(i=1.4)} 
     &:focus{
         outline: none;
     }

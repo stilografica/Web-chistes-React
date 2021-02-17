@@ -1,18 +1,8 @@
 import styled from "styled-components"
-import {keyframes} from 'styled-components'
 import GlobalStyle from "../Styles/StyleGlobal"
 import {Button, Header, Subtitle} from "../Styles/StyledArticle"
-import {color, font} from "../Styles/StyledVariables"
-
- export const start = keyframes`
-    0% {
-        transform: translateY(100%);
-    }
-    100% {
-        transform: translateY(0%);
-        opacity: 1;
-    }
-`;
+import {color, font, selection, animation} from "../Styles/StyledVariables"
+import {Link} from "react-router-dom";
 
 export const StyledDiv = styled.div`
     background-image: url("../../src/Assets/Images/joker.jpg");
@@ -25,26 +15,24 @@ export const StyledDiv = styled.div`
         color: ${color.white};
         text-transform: uppercase;
         opacity: 0;
-        -webkit-animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1.3s forwards; 
-        animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1.3s forwards;     
+        ${animation(i=1.3)}  
         &::selection {
-            background-color: ${color.aqua};
-            color: ${color.white};
+            ${selection};
         }
     }
     @media screen and (max-width:790px){
         padding-left: 1rem;
     }
 `;
-
+//Variable declared to pass time delay "animation"
+let i;
 export const Image = styled.img`
     max-width: 25rem;
     opacity: 0;
-    -webkit-animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1s forwards; 
-    animation: ${start} 0.8s cubic-bezier(0.27, 0.96, 0.58, 1) 1s forwards;     
+    ${animation(i=1)}   
 `;
 
-export default (props) => {
+export default () => {
     return (
         <StyledDiv>
             <GlobalStyle />
@@ -52,7 +40,9 @@ export default (props) => {
             <p>Presents...</p>
             <Header>THE JOKER</Header>
             <Subtitle>La nova secció molona d’acudits en anglès per morir-se de riure, of course!</Subtitle>
-            <Button onClick={() => props.handleEvent(true)}>¿Comencem?</Button>
+            <Link to="/JokePage">
+                <Button>¿Comencem?</Button>
+            </Link>
         </StyledDiv>
     );
 };
